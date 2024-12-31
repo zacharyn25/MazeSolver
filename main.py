@@ -5,19 +5,19 @@ from Cell import Cell
 from Maze import Maze
 
 def main():
-    win = Window(800, 600)
-    point_1 = Point(0,0)
-    point_2 = Point(800,600)
-    line = Line(point_1, point_2)
-    cell = Cell(0, 50, 0, 40,win)
-    cell_2 = Cell(200, 280, 200, 396,win)
-    cell.draw()
-    cell_2.draw()
-    cell.draw_move(cell_2, True)
+    num_rows = 12
+    num_cols = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
+    cell_size_x = (screen_x - 2 * margin) / num_cols
+    cell_size_y = (screen_y - 2 * margin) / num_rows
+    win = Window(screen_x, screen_y)
 
-    maze = Maze(0,0,50,50,10,10,win)
+    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win, 10)
 
     win.wait_for_close()
+
 
 if __name__ == "__main__":
     main()

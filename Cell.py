@@ -17,31 +17,52 @@ class Cell:
         self.y1 = y1
         self.y2 = y2
         self.window = window
+        self.visited = False
 
-    def draw(self, fill_color="red"):
+    def draw(self, fill_color="gray"):
         if self.has_left_wall:
             point_1 = Point(self.x1,self.y1)
             point_2 = Point(self.x1,self.y2)
             line = Line(point_1, point_2)
             self.window.draw_line(line, fill_color)
+        else:
+            point_1 = Point(self.x1,self.y1)
+            point_2 = Point(self.x1,self.y2)
+            line = Line(point_1, point_2)
+            self.window.draw_line(line, "white")
 
         if self.has_right_wall:
             point_1 = Point(self.x2,self.y1)
             point_2 = Point(self.x2,self.y2)
             line = Line(point_1, point_2)
             self.window.draw_line(line, fill_color)
+        else:
+            point_1 = Point(self.x2,self.y1)
+            point_2 = Point(self.x2,self.y2)
+            line = Line(point_1, point_2)
+            self.window.draw_line(line, "white")
 
         if self.has_top_wall:
             point_1 = Point(self.x1,self.y1)
             point_2 = Point(self.x2,self.y1)
             line = Line(point_1, point_2)
             self.window.draw_line(line, fill_color)
+        else:
+            point_1 = Point(self.x1,self.y1)
+            point_2 = Point(self.x2,self.y1)
+            line = Line(point_1, point_2)
+            self.window.draw_line(line, "white")
 
         if self.has_bottom_wall:
             point_1 = Point(self.x1,self.y2)
             point_2 = Point(self.x2,self.y2)
             line = Line(point_1, point_2)
             self.window.draw_line(line, fill_color)
+        else:
+            point_1 = Point(self.x1,self.y2)
+            point_2 = Point(self.x2,self.y2)
+            line = Line(point_1, point_2)
+            self.window.draw_line(line, "white")
 
     def draw_move(self, to_cell, undo=False):
         cell_center = Point((self.x1 + self.x2) / 2, (self.y1 + self.y2) / 2)
@@ -51,6 +72,6 @@ class Cell:
             fill_color="gray"
         else:
             fill_color="red"
-            
+
         self.window.draw_line(line, fill_color)
         
